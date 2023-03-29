@@ -1,0 +1,29 @@
+.mainHeaderBlock{
+    display: flex;
+}
+
+.title{
+    margin-left: 2%;
+}
+
+.pictures{
+    margin-left: 30px;
+}
+
+.adress{
+    margin-left: 10%;
+}
+.metr{
+    margin-left: 30px;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.adr{
+    margin-top: 5px;  
+}
+.tel{
+    margin-top: 5px;
+    margin-left: -70px;  
+}

@@ -1,0 +1,23 @@
+.main{
+    margin-left: 1.5%;
+}
+
+.dot{
+  font-weight: bold;  
+}
+
+table{
+    margin-top: 10px;
+}
+
+.tableTitle{
+    height: 10px;
+    width: 45px;
+    font-size: 14px;
+}
+.tableCntent{
+    height: 10px;
+    font-size: 14px;
+    width: 45px;
+}
+

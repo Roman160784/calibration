@@ -1,0 +1,41 @@
+
+.main{
+    width: 1000px;
+    height: 1300px;
+}
+  .reportNumber{
+    margin-top: 10px;
+    margin-left: 10%;
+    font-weight: bold;
+    }
+
+.table{
+    width: 1000px;
+    height: 1000px;
+    margin-top: 10px;
+    margin-left: 1%;
+    font-size: 20px;
+}
+
+.standardTable{
+    width: 700px;
+    height: 100px;
+}
+
+td{
+    padding-left: 10px;
+    font-size: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+.secondPage{
+    margin-left: 1%;
+}
+
+.string{
+    margin-top: 10px;
+}
+
+   
