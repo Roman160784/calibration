@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { addCalibrationFieldAC, CalculationType, changeCallibrationValueAC } from '../../redux/calculationReducer';
+import { addCalibrationFieldAC, CalculationType, changeCallibrationValueAC, changeTestVoltageAC } from '../../redux/calculationReducer';
 import { useAppDispatch } from '../../redux/store';
+import { EditableSpan } from '../CommonComponents/EditableSpan/EditableSpan';
 import { EditableSpanFalse } from '../CommonComponents/EditableSpanFalse/EditableSpanFalse';
 import classes from './Calculation.module.css'
 
@@ -19,12 +20,15 @@ export const Calculation = ({calculationData,...props}: CalculationPropsType) =>
     }
 
     const changeTestVoltage = (id: string, title: string) => {
-        
+        dispatch(changeTestVoltageAC({id: id, voltage: title}))
     }
 
     return (
         <div className={classes.main}>
-           <div className={classes.dot}> Калибруемая отметка  {calculationData.calibrationDot} МОм при ипытательном напряжении {calculationData.testVoltage} </div>
+           <div className={classes.dot}> Калибруемая отметка  {calculationData.calibrationDot}
+            МОм при ипытательном напряжении  {`  `}  
+            <EditableSpan title={calculationData.testVoltage} changeTitle={(title) => {changeTestVoltage(calculationData.id, title)}}/>
+            </div>
             <table border={1}>
                 <tr>
                     <td className={classes.tableTitle}>№ измерения</td>

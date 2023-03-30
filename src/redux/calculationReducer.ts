@@ -231,21 +231,24 @@ const slice = createSlice({
                 coefficient: coefficient,
             }
 
-            debugger
            const newCalculationField = state.calculation.map(st => st.id === action.payload.id ? st = newCalibrationField : st)
            const newResultField = state.result.map(r => r.id === action.payload.id ? r = calibrationResult : r)
            state.calculation = newCalculationField
            state.result = newResultField
-            
-           
-            
+             
+        },
+        changeTestVoltageAC(state, action: PayloadAction<{id: string, voltage: string}>){
+            const newCalculationField =  state.calculation.map(c => c.id === action.payload.id ? {...c, testVoltage: action.payload.voltage}: c)
+            const newResultField = state.result.map(r => r.id === action.payload.id ? {...r, testVoltage: action.payload.voltage}: r)
+            state.calculation = newCalculationField
+           state.result = newResultField
         }
     }
 })
 
 export const CalculationReducer = slice.reducer
     
-export const {addCalibrationFieldAC, changeCallibrationValueAC} = slice.actions
+export const {addCalibrationFieldAC, changeCallibrationValueAC, changeTestVoltageAC} = slice.actions
 
 
 
