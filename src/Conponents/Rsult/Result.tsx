@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { ResultType } from '../../redux/calculationReducer';
 import { changeReportParameterAC } from '../../redux/reportReducer';
-import { ResultType } from '../../redux/resultReducer';
 import { selectReport } from '../../redux/selectors/reportSelector';
 import { useAppDispatch } from '../../redux/store';
 import { EditableSpan } from '../CommonComponents/EditableSpan/EditableSpan';
@@ -12,17 +12,17 @@ type ResulPropstType = {
     calibrationResult: ResultType[]
 }
 
-export const Result = ({calibrationResult , ...props}: ResulPropstType) => {
+export const Result = ({ calibrationResult, ...props }: ResulPropstType) => {
 
     const dispatch = useAppDispatch()
     const report = useSelector(selectReport)
 
 
-    const changeReportParametr = ( key: string, parameter: string) => {
-        dispatch(changeReportParameterAC({ key, parameter}))
+    const changeReportParametr = (key: string, parameter: string) => {
+        dispatch(changeReportParameterAC({ key, parameter }))
     }
 
-    return(
+    return (
         <div className={classes.main}>
             <table className={classes.table} border={1}>
                 <tr>
@@ -35,26 +35,35 @@ export const Result = ({calibrationResult , ...props}: ResulPropstType) => {
                     <td className={classes.td}>Доверительная вероятность, %</td>
                     <td className={classes.td}>Коэффициент охвата</td>
                 </tr>
-                <DataForResult/>
+                {
+                    calibrationResult.map(r => {
+                        return (
+                            <tr key={r.id}>
+                                <DataForResult calibrationResult={r} />
+                            </tr>
+                        )
+                    })
+                }
+
             </table>
             <div className={classes.table}>
-            Расширенная неопределённость получена путём уножения суммарной стандартной непределённости на коэффициент охвата k соответствующий уровню доверия, роиблизительно равному 95% при допущении вида распределения, указанного в таблице. Оценивание неопределённости проведено в соответствии с "Руководством по выражению неопределённости в измерениях GUM"
+                Расширенная неопределённость получена путём уножения суммарной стандартной непределённости на коэффициент охвата k соответствующий уровню доверия, роиблизительно равному 95% при допущении вида распределения, указанного в таблице. Оценивание неопределённости проведено в соответствии с "Руководством по выражению неопределённости в измерениях GUM"
             </div>
             <div className={classes.table}>
                 Заключение о соответствии:
                 <div className={classes.table}>{report.calibrationObject} № {report.serialNumber}</div>
                 <div className={classes.table}>
-                в калибруемых точках соответствует  обязательным метрологическим требованиям в соответствии с описанием типа при установлении соответствия применно правило принятия решения, основанное на простой приёмке в соответствии с СТБ ISO/IEC Guide 98-4-2019
+                    в калибруемых точках соответствует  обязательным метрологическим требованиям в соответствии с описанием типа при установлении соответствия применно правило принятия решения, основанное на простой приёмке в соответствии с СТБ ISO/IEC Guide 98-4-2019
                 </div>
-                <div className={classes.table}>Калибровочное клеймо: <EditableSpan title={ report.stigma} 
-                    changeTitle={(title) => {changeReportParametr( 'stigma', title)}}/></div>
+                <div className={classes.table}>Калибровочное клеймо: <EditableSpan title={report.stigma}
+                    changeTitle={(title) => { changeReportParametr('stigma', title) }} /></div>
                 <div className={classes.table}>
-                Калибровку выполнил: <span> __________ <EditableSpan title={ report.engineer} 
-                    changeTitle={(title) => {changeReportParametr( 'engineer', title)}}/></span> 
+                    Калибровку выполнил: <span> __________ <EditableSpan title={report.engineer}
+                        changeTitle={(title) => { changeReportParametr('engineer', title) }} /></span>
                 </div>
                 <div className={classes.table}>
-                Проверил :  <span> __________ <EditableSpan title={ report.boss} 
-                    changeTitle={(title) => {changeReportParametr( 'boss', title)}}/> </span> 
+                    Проверил :  <span> __________ <EditableSpan title={report.boss}
+                        changeTitle={(title) => { changeReportParametr('boss', title) }} /> </span>
                 </div>
             </div>
         </div>

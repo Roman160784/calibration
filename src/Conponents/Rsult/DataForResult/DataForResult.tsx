@@ -1,23 +1,23 @@
 import React from 'react';
-import { ResultType } from '../../../redux/resultReducer';
+import { ResultType } from '../../../redux/calculationReducer';
 import classes from '../result.module.css'
 
 type DataForResult = {
     calibrationResult: ResultType
 }
 
-export const DataForResult = ({...props} : any) => {
+export const DataForResult = ({calibrationResult, ...props} : DataForResult) => {
 
     return (
-        <tr>
-            <td className={classes.td}>2 MОм</td>
-            <td className={classes.td}>500 В</td>
-            <td className={classes.td}>1,7 МОм</td>
-            <td className={classes.td}> -0,3 МОм</td>
-            <td className={classes.td}>±0,075 МОм</td>
-            <td className={classes.td}>0,5 МОм</td>
-            <td className={classes.td}>95</td>
-            <td className={classes.td}>2</td>
-        </tr>
+        <>
+            <td className={classes.td}>{calibrationResult.calibrationDot} MОм</td>
+            <td className={classes.td}>{calibrationResult.testVoltage}</td>
+            <td className={classes.td}>{calibrationResult.calibrationMiddleValue} МОм</td>
+            <td className={classes.td}> {calibrationResult.error} МОм</td>
+            <td className={classes.td}>± {calibrationResult.permissibleValue} МОм</td>
+            <td className={classes.td}>{calibrationResult.expandedUncertainty} МОм</td>
+            <td className={classes.td}>{calibrationResult.probability}</td>
+            <td className={classes.td}>{calibrationResult.coefficient}</td>
+        </>
     )
 }
