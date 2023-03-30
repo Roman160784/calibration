@@ -1,5 +1,6 @@
 import React from 'react';
 import { CalculationType } from '../../redux/calculationReducer';
+import { EditableSpanFalse } from '../CommonComponents/EditableSpanFalse/EditableSpanFalse';
 import classes from './Calculation.module.css'
 
 type CalculationPropsType= {
@@ -7,6 +8,10 @@ type CalculationPropsType= {
 }
 
 export const Calculation = ({calculationData,...props}: CalculationPropsType) => {
+
+    const changeCalibrationValue = () => {
+
+    }
 
     return (
         <div className={classes.main}>
@@ -16,46 +21,18 @@ export const Calculation = ({calculationData,...props}: CalculationPropsType) =>
                     <td className={classes.tableTitle}>№ измерения</td>
                     <td className={classes.tableTitle}>Измеренное значение, МОм</td>
                 </tr>
-                <tr>
-                    <td className={classes.tableCntent}>1</td>
-                    <td className={classes.tableCntent}>{calculationData.dataForCalibration[0]}</td>
-                </tr>
-                <tr>
-                    <td className={classes.tableCntent}>2</td>
-                    <td className={classes.tableCntent}>{calculationData.dataForCalibration[1]}</td>
-                </tr>
-                <tr>
-                    <td className={classes.tableCntent}>3</td>
-                    <td className={classes.tableCntent}>{calculationData.dataForCalibration[2]}</td>
-                </tr>
-                <tr>
-                    <td className={classes.tableCntent}>4</td>
-                    <td className={classes.tableCntent}>{calculationData.dataForCalibration[3]}</td>
-                </tr>
-                <tr>
-                    <td className={classes.tableCntent}>5</td>
-                    <td className={classes.tableCntent}>{calculationData.dataForCalibration[4]}</td>
-                </tr>
-                <tr>
-                    <td className={classes.tableCntent}>6</td>
-                    <td className={classes.tableCntent}>{calculationData.dataForCalibration[5]}</td>
-                </tr>
-                <tr>
-                    <td className={classes.tableCntent}>7</td>
-                    <td className={classes.tableCntent}>{calculationData.dataForCalibration[6]}</td>
-                </tr>
-                <tr>
-                    <td className={classes.tableCntent}>8</td>
-                    <td className={classes.tableCntent}>{calculationData.dataForCalibration[7]}</td>
-                </tr>
-                <tr>
-                    <td className={classes.tableCntent}>9</td>
-                    <td className={classes.tableCntent}>{calculationData.dataForCalibration[8]}</td>
-                </tr>
-                <tr>
-                    <td className={classes.tableCntent}>10</td>
-                    <td className={classes.tableCntent}>{calculationData.dataForCalibration[9]}</td>
-                </tr>
+                {
+                    calculationData.dataForCalibration.map((el, i) => {
+                        return(
+                            <tr key={i}>
+                               <td className={classes.tableCntent}>{i+1}</td> 
+                              < td className={classes.tableCntent}>
+                    <EditableSpanFalse title={el.toString()} changeTitle={changeCalibrationValue}/></td>
+                            </tr>
+                        )
+                    })
+                }
+               
             </table>
             <div className={classes.dot}> Результат: Среднее значение {calculationData.calibrationMiddleValue} МОм </div>
 
