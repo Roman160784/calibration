@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { addCalibrationFieldAC, CalculationType, changeCallibrationValueAC, changeTestVoltageAC } from '../../redux/calculationReducer';
+import { addCalibrationFieldAC, CalculationType, changeCallibrationValueAC, changeTestVoltageAC, removeCalibtationFieldAC } from '../../redux/calculationReducer';
 import { useAppDispatch } from '../../redux/store';
+import { Button } from '../CommonComponents/Button/Button';
 import { EditableSpan } from '../CommonComponents/EditableSpan/EditableSpan';
 import { EditableSpanFalse } from '../CommonComponents/EditableSpanFalse/EditableSpanFalse';
 import classes from './Calculation.module.css'
@@ -23,13 +24,14 @@ export const Calculation = ({calculationData,...props}: CalculationPropsType) =>
         dispatch(changeTestVoltageAC({id: id, voltage: title}))
     }
 
+    const removeCalibratonField = (id: string) => {
+        dispatch(removeCalibtationFieldAC({id: id}))
+    }
+
     return (
         <div className={classes.main}>
-           <div className={classes.dot}> Калибруемая отметка  {calculationData.calibrationDot}
-            МОм при ипытательном напряжении  {`  `}  
-            <EditableSpan title={calculationData.testVoltage} changeTitle={(title) => {changeTestVoltage(calculationData.id, title)}}/>
-            </div>
-            <table border={1}>
+           
+            <table className={classes.firstTable} border={1}>
                 <tr>
                     <td className={classes.tableTitle}>№ измерения</td>
                     <td className={classes.tableTitle}>Измеренное значение, МОм</td>
@@ -48,9 +50,18 @@ export const Calculation = ({calculationData,...props}: CalculationPropsType) =>
                 }
                
             </table>
+            <div className={classes.resultBlock}>
+                
+                <div className={classes.dot}> Калибруемая отметка  {calculationData.calibrationDot}
+            МОм при ипытательном напряжении  {`  `}  
+            <EditableSpan title={calculationData.testVoltage} changeTitle={(title) => {changeTestVoltage(calculationData.id, title)}}/>
+            </div>
             <div className={classes.dot}> Результат: Среднее значение {calculationData.calibrationMiddleValue} МОм </div>
-
-            <table border={1}>
+            <Button title={'Удалить точку калибровки'} onClick={() => { removeCalibratonField(calculationData.id); } } classes={''}/>
+            </div>
+            
+<br />
+            <table className={classes.firstTable} border={1}>
                 <tr>
                     <td className={classes.tableTitle}>Входная величина, МОм</td>
                     <td className={classes.tableTitle}>Значение оценки Xi, МОм</td>
@@ -97,7 +108,7 @@ export const Calculation = ({calculationData,...props}: CalculationPropsType) =>
                 </tr>
                 
                 <tr>
-                    <td className={classes.tableCntent}>δind</td>
+                    <td className={classes.tableContent}>δind</td>
                     <td className={classes.tableCntent}>-</td>
                     <td className={classes.tableCntent}>{calculationData.userError}</td>
                     <td className={classes.tableCntent}>B</td>

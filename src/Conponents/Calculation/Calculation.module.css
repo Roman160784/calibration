@@ -1,9 +1,11 @@
 .main{
     margin-left: 1.5%;
+    
 }
 
 .dot{
-  font-weight: bold;  
+  font-weight: bold;
+    
 }
 
 table{
@@ -15,10 +17,15 @@ table{
     width: 45px;
     font-size: 14px;
 }
-.tableCntent{
+.tableCnotent{
     text-align: center;
     height: 10px;
     font-size: 14px;
     width: 45px;
 }
 
+.resultBlock{
+    margin-top: -200px;
+    margin-bottom: 150px;
+    margin-left: 20%;
+}

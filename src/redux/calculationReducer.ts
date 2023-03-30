@@ -240,15 +240,23 @@ const slice = createSlice({
         changeTestVoltageAC(state, action: PayloadAction<{id: string, voltage: string}>){
             const newCalculationField =  state.calculation.map(c => c.id === action.payload.id ? {...c, testVoltage: action.payload.voltage}: c)
             const newResultField = state.result.map(r => r.id === action.payload.id ? {...r, testVoltage: action.payload.voltage}: r)
+
             state.calculation = newCalculationField
            state.result = newResultField
-        }
+        },
+        removeCalibtationFieldAC(state, action: PayloadAction<{id: string}>){
+            const newCalculationField =  state.calculation.filter(c => c.id !== action.payload.id)
+            const newResultField = state.result.filter(r => r.id !== action.payload.id)
+
+            state.calculation = newCalculationField
+            state.result = newResultField
+        },
     }
 })
 
 export const CalculationReducer = slice.reducer
     
-export const {addCalibrationFieldAC, changeCallibrationValueAC, changeTestVoltageAC} = slice.actions
+export const {addCalibrationFieldAC, changeCallibrationValueAC, changeTestVoltageAC, removeCalibtationFieldAC} = slice.actions
 
 
 
