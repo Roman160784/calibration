@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useState, KeyboardEvent } from 'react';
 import st from './editableSpan.module.css'
 
 
@@ -21,15 +21,22 @@ export const EditableSpanFalse = ({title, changeTitle ,...props}: EditableSpanPr
 const onBlurHandler = () => {
     if(value.trim() !== ''){
         changeTitle(value)
-        setEditMode(false)
+        setEditMode(true)
     } 
+}
+
+const onKeyPresHandler = (e: KeyboardEvent <HTMLInputElement>) => {
+    if(e.key === 'Tab'){
+        setEditMode(false)
+    }
 }
 
 const onDoubleClickHandler = () => {
     setEditMode(true)
 }
     return  mode
-            ?<input className={st.inputSpan} type="text" value={value} onChange={onChangeHandler} onBlur={onBlurHandler} autoFocus/>
+            ?<input className={st.inputSpan} type="text" value={value} onKeyDown={onKeyPresHandler} 
+            onChange={onChangeHandler} onBlur={onBlurHandler} autoFocus/>
             : <span className={st.text} onDoubleClick={onDoubleClickHandler}>{title}</span>
             
 }

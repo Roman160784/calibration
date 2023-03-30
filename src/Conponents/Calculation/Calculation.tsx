@@ -1,5 +1,6 @@
-import React from 'react';
-import { CalculationType } from '../../redux/calculationReducer';
+import React, { useState } from 'react';
+import { addCalibrationFieldAC, CalculationType, changeCallibrationValueAC } from '../../redux/calculationReducer';
+import { useAppDispatch } from '../../redux/store';
 import { EditableSpanFalse } from '../CommonComponents/EditableSpanFalse/EditableSpanFalse';
 import classes from './Calculation.module.css'
 
@@ -9,8 +10,16 @@ type CalculationPropsType= {
 
 export const Calculation = ({calculationData,...props}: CalculationPropsType) => {
 
-    const changeCalibrationValue = () => {
+    const [arr, setArr] = useState<number[]>([])
+    const dispatch = useAppDispatch()
+    
 
+    const changeCalibrationValue = (value: string, id: string, i: number) => {
+      dispatch(changeCallibrationValueAC({value: +value, id: id, i: i,})) 
+    }
+
+    const changeTestVoltage = (id: string, title: string) => {
+        
     }
 
     return (
@@ -27,7 +36,8 @@ export const Calculation = ({calculationData,...props}: CalculationPropsType) =>
                             <tr key={i}>
                                <td className={classes.tableCntent}>{i+1}</td> 
                               < td className={classes.tableCntent}>
-                    <EditableSpanFalse title={el.toString()} changeTitle={changeCalibrationValue}/></td>
+                    <EditableSpanFalse title={el.toString()} 
+                    changeTitle={(title)=> {changeCalibrationValue(title, calculationData.id, i)}}/></td>
                             </tr>
                         )
                     })
