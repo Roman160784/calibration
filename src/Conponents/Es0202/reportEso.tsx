@@ -1,10 +1,13 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { v1 } from 'uuid';
+import { pathEnum } from '../../Main/MainPage/MainPage';
 import { addCalibrationFieldAC } from '../../redux/calculationReducer';
 import { selectCAlculationData } from '../../redux/selectors/calculationSelector';
 import { useAppDispatch } from '../../redux/store';
 import { Calculation } from '../Calculation/Calculation';
+import { Button } from '../CommonComponents/Button/Button';
 import { Input } from '../CommonComponents/Input/Input';
 import { ReportFirstPage } from '../ReportFirstPage/ReportFirtsPage';
 import { ReportHeader } from '../ReportHeader/ReportHeader';
@@ -14,6 +17,7 @@ import classes from './reportEso.module.css'
 
 export const ReportEso = () => {
 
+    const navigate = useNavigate()
     const [value, setValue] = useState<string>('')
     const dispatch = useAppDispatch()
     const calculationData = useSelector(selectCAlculationData)
@@ -28,6 +32,10 @@ export const ReportEso = () => {
             dispatch(addCalibrationFieldAC({id: v1(),  dot: +value,}))
         }
         setValue('')
+    }
+
+    const createCertificateHandler = () => {
+        navigate(pathEnum.certificate)
     }
 
     return (
@@ -55,6 +63,7 @@ export const ReportEso = () => {
                 </div>
                 <Result calibrationResult={calibrationResult}/>
             </div>
+            <Button title={'Создать свидетельство'} onClick={createCertificateHandler}  classes={classes.createCertificate}/>
         </div>
     )
 }

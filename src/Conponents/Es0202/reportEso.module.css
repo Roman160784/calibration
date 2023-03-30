@@ -7,3 +7,9 @@
     margin-left: 10px;
     opacity: 0.5;
 }
+
+.createCertificate{
+    margin-left: 45%;
+    background-color: green;
+    color: white
+}
