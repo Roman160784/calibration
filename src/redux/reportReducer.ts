@@ -48,7 +48,7 @@ const initialState: ReportType = {
     calibrationDate: '11.11.2023',
     method: 'МК.ГМ 1580 - 2013, Метод прямых измерений',
     stigma: 'BY00045',
-    boss: 'Начальник сектора: ЭМиР Миранович Д. В.',
+    boss: 'Начальник сектора ЭМиР Миранович Д. В.',
     engineer: "Инженер по метрологии: Матвеенко Р. С.",
     calibrationConditions: {
         id: v1(),
