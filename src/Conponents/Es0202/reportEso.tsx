@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Navigate, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { v1 } from 'uuid';
 import { pathEnum } from '../../Main/MainPage/MainPage';
 import { addCalibrationFieldAC } from '../../redux/calculationReducer';
@@ -13,6 +13,7 @@ import { ReportFirstPage } from '../ReportFirstPage/ReportFirtsPage';
 import { ReportHeader } from '../ReportHeader/ReportHeader';
 import { Result } from '../Rsult/Result';
 import classes from './reportEso.module.css'
+
 
 
 export const ReportEso = () => {
