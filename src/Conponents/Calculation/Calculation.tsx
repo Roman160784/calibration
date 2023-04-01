@@ -52,7 +52,7 @@ export const Calculation = ({calculationData,...props}: CalculationPropsType) =>
             </table>
             <div className={classes.resultBlock}>
                 
-                <div className={classes.dot}> Калибруемая отметка  {calculationData.calibrationDot}
+                <div className={classes.dot}> Калибруемая отметка  {calculationData.calibrationDot} {`  `}  
             МОм при ипытательном напряжении  {`  `}  
             <EditableSpan title={calculationData.testVoltage} changeTitle={(title) => {changeTestVoltage(calculationData.id, title)}}/>
             </div>
