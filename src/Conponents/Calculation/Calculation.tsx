@@ -4,6 +4,7 @@ import { useAppDispatch } from '../../redux/store';
 import { Button } from '../CommonComponents/Button/Button';
 import { EditableSpan } from '../CommonComponents/EditableSpan/EditableSpan';
 import { EditableSpanFalse } from '../CommonComponents/EditableSpanFalse/EditableSpanFalse';
+import { Modal } from '../CommonComponents/Modal/Modal';
 import classes from './Calculation.module.css'
 
 type CalculationPropsType= {
@@ -12,7 +13,7 @@ type CalculationPropsType= {
 
 export const Calculation = ({calculationData,...props}: CalculationPropsType) => {
 
-    const [arr, setArr] = useState<number[]>([])
+    const [modal, setModal] = useState<boolean>(false)
     const dispatch = useAppDispatch()
     
 
@@ -26,6 +27,15 @@ export const Calculation = ({calculationData,...props}: CalculationPropsType) =>
 
     const removeCalibratonField = (id: string) => {
         dispatch(removeCalibtationFieldAC({id: id}))
+        setModal(false)
+    }
+
+    const removeButtonHandler = () => {
+        setModal(true)
+    }
+
+    const buttonNoHandler = () => {
+        setModal(false)
     }
 
     return (
@@ -56,8 +66,9 @@ export const Calculation = ({calculationData,...props}: CalculationPropsType) =>
             МОм при ипытательном напряжении  {`  `}  
             <EditableSpan title={calculationData.testVoltage} changeTitle={(title) => {changeTestVoltage(calculationData.id, title)}}/>
             </div>
+            
             <div className={classes.dot}> Результат: Среднее значение {calculationData.calibrationMiddleValue} МОм </div>
-            <Button title={'Удалить точку калибровки'} onClick={() => { removeCalibratonField(calculationData.id); } } classes={''}/>
+            <Button title={'Удалить точку калибровки'} onClick={removeButtonHandler} classes={''}/>
             </div>
             
 <br />
@@ -130,6 +141,17 @@ export const Calculation = ({calculationData,...props}: CalculationPropsType) =>
                     <td className={classes.tableCntent}>{calculationData.uncertaintyResultPercent}</td>
                 </tr>
             </table>
+            
+            <Modal active={modal} setActive={undefined} >
+                <div className={classes.modalBlock}>
+                    <h1>Точно???</h1>
+                    <div className={classes.buttonBlock}>
+                        <button className={classes.buttonYes} onClick={() => {removeCalibratonField(calculationData.id)}}>Да</button>
+                        <button className={classes.buttonNo} onClick={buttonNoHandler}>Нет</button>
+                    </div>
+                </div>
+                </Modal>
+                
         </div>
     )
 }

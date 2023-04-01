@@ -29,3 +29,32 @@ table{
     margin-bottom: 150px;
     margin-left: 20%;
 }
+.modalBlock{
+    background-color: rgb(149, 209, 170);
+    border-radius: 3px;
+}
+
+.buttonBlock{
+margin-top: 30px;
+padding-bottom: 15px;
+}
+
+.buttonYes{
+    width: 70px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 3px;
+    background-color: rgb(62, 230, 65);
+    margin-right: 50px;
+    color: white;
+}
+
+
+.buttonNo{
+    width: 70px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 3px;
+    background-color: rgb(230, 62, 62);
+    color: white;
+}
