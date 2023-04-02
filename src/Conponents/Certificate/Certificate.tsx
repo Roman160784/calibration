@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import classes from './Certificate.module.css'
 import bgca from '../../Logo/bgca.jpg'
 import certif from '../../Logo/certif.png'
@@ -6,15 +6,23 @@ import iso from '../../Logo/iso.png'
 import { useSelector } from 'react-redux';
 import { selectReport } from '../../redux/selectors/reportSelector';
 import { selectCAlculationData } from '../../redux/selectors/calculationSelector';
-
+import {useReactToPrint} from 'react-to-print'
 
 export const Certificate = () => {
 
+    const componentRef = useRef()
     const report = useSelector(selectReport)
     const calculationData = useSelector(selectCAlculationData)
 
+    const pdfHandler = useReactToPrint({
+        content: () => componentRef.current!,
+         documentTitle: 'Certificate',
+    })
+
+
     return (
-        <div>
+        // @ts-ignore
+        <div ref={componentRef}>
             <div className={classes.page}>
                 <div className={classes.title}>
                     <div>РЕСПУБЛИКАНСКОЕ УНИТАРНОЕ ПРЕДПРИЯТИЕ </div>
@@ -75,7 +83,7 @@ export const Certificate = () => {
                 </div>
                 <div className={classes.fio}>{`(Ф.И.О. и должность)`} </div>
             </div>
-            <div className={classes.page}>
+            <div className={classes.pageTwo}>
                 <div className={classes.sert}>Свидетельство о калибровке</div>
                 <div className={classes.sert}>
                     <span>Номер свидетельства:</span>
@@ -89,16 +97,16 @@ export const Certificate = () => {
                 <div className={classes.tableStandardBlock}>
                     <table border={1}>
                         <tr className={classes.tableStandard}>
-                            <td> Наименование </td>
-                            <td> Тип</td>
-                            <td> Зав. №</td>
-                            <td>Дата метрологической оценки</td>
+                            <td className={classes.tableBlockTl}> Наименование </td>
+                            <td className={classes.tableBlockTl}> Тип</td>
+                            <td className={classes.tableBlockTl}> Зав. №</td>
+                            <td className={classes.tableBlockTl}>Дата метрологической оценки</td>
                         </tr>
                         <tr className={classes.tableStandard}>
-                            <td>{report.standard.standardName}</td>
-                            <td>{report.standard.standardType}</td>
-                            <td>{report.standard.standardNumber}</td>
-                            <td>{report.standard.calibrationDate}</td>
+                            <td className={classes.tableBlockTl}>{report.standard.standardName}</td>
+                            <td className={classes.tableBlockTl}>{report.standard.standardType}</td>
+                            <td className={classes.tableBlockTl}>{report.standard.standardNumber}</td>
+                            <td className={classes.tableBlockTl}>{report.standard.calibrationDate}</td>
                         </tr>
                     </table>
                 </div>
@@ -126,31 +134,31 @@ export const Certificate = () => {
                     <span className={classes.tab2}> Таблица 2</span>
                 </div>
                 <div className={classes.tableBlock}>
-                    <table  className={classes.tableBlock} border={1}>
-                        <tr>
-                            <td className={classes.tableBlock}>Калибруемая точка</td>
-                            <td className={classes.tableBlock}>Испытательное напряжение</td>
-                            <td className={classes.tableBlock}>Полученное значение</td>
-                            <td className={classes.tableBlock}>Абсолютная погрешность</td>
-                            <td className={classes.tableBlock}> Предел основной абсолютной погрешности</td>
-                            <td className={classes.tableBlock}>Расширенная неопределенность</td>
-                            <td className={classes.tableBlock}>Доверительная вероятность, %</td>
-                            <td className={classes.tableBlock}>Коэффициент охвата</td>
-                            <td className={classes.tableBlock}>Распределение</td>
+                    <table  className={classes.tableResult} border={1}>
+                        <tr className={classes.tableResult}>
+                            <td className={classes.tableBlockTd}>Калибруемая точка</td>
+                            <td className={classes.tableBlockTd}>Испытательное напряжение</td>
+                            <td className={classes.tableBlockTd}>Полученное значение</td>
+                            <td className={classes.tableBlockTd}>Абсолютная погрешность</td>
+                            <td className={classes.tableBlockTd}> Предел основной абсолютной погрешности</td>
+                            <td className={classes.tableBlockTd}>Расширенная неопределенность</td>
+                            <td className={classes.tableBlockTd}>Доверительная вероятность, %</td>
+                            <td className={classes.tableBlockTd}>Коэффициент охвата</td>
+                            <td className={classes.tableBlockTd}>Распределение</td>
                         </tr>
                         {
                             calculationData.result.map(r => {
                                 return(
                                     <tr key={r.id}>
-                                        <td className={classes.tableBlock}>{r.calibrationDot} MOм</td>
-                                        <td className={classes.tableBlock}>{r.testVoltage}</td>
-                                        <td className={classes.tableBlock}>{r.calibrationMiddleValue} MOм</td>
-                                        <td className={classes.tableBlock}>{r.error} MOм</td>
-                                        <td className={classes.tableBlock}> ± {r.permissibleValue} MOм</td>
-                                        <td className={classes.tableBlock}> {r.expandedUncertainty} MOм</td>
-                                        <td className={classes.tableBlock}>{r.probability}</td>
-                                        <td className={classes.tableBlock}>{r.coefficient}</td>
-                                        <td className={classes.tableBlock}>{r.coefficient === 2 ? 'нормальное' : 'прямоугольное'}</td>
+                                        <td className={classes.tableBlockTd}>{r.calibrationDot} MOм</td>
+                                        <td className={classes.tableBlockTd}>{r.testVoltage}</td>
+                                        <td className={classes.tableBlockTd}>{r.calibrationMiddleValue} MOм</td>
+                                        <td className={classes.tableBlockTd}>{r.error} MOм</td>
+                                        <td className={classes.tableBlockTd}> ± {r.permissibleValue} MOм</td>
+                                        <td className={classes.tableBlockTd}> {r.expandedUncertainty} MOм</td>
+                                        <td className={classes.tableBlockTd}>{r.probability}</td>
+                                        <td className={classes.tableBlockTd}>{r.coefficient}</td>
+                                        <td className={classes.tableBlockTd}>{r.coefficient === 2 ? 'нормальное' : 'прямоугольное'}</td>
                                     </tr>
                                 )
                             })
@@ -173,13 +181,14 @@ export const Certificate = () => {
                 Межкалибровочный интервал не должен превышать 12 месяцев
                 </div>
                 <div className={classes.engineer}>
+                Дополнительная информация: протокол калибровки № {report.reportNumber}
+                </div>
+                <div className={classes.engineer}>
                 Подпись лица, выполнившего калибровку:  
                 <span className={classes.name}>{report.engineer}</span>
                 <div className={classes.nameDisv}>{`(Ф.И.О., должность)`}</div>
                 </div>
-                <div className={classes.engineer}>
-                Дополнительная информация: протокол калибровки № {report.reportNumber}
-                </div>
+                
                 <div className={classes.adressAgain}>
                 {`ул.Лепешинского,1, 246015, г.Гомель,  +375 232 26-33-03, +375 232 26-33-25 факс,`}
                 </div>
@@ -193,8 +202,9 @@ export const Certificate = () => {
                 Место проведения калибровки:  
                 <span> {report.calibrarionPlace}</span>
                 <div className={classes.labAdress}>246015, г. Гомель, ул. Лепешинского, 1</div>
-                </div>
-            </div>
+                </div>   
+            </div>   
+            <button onClick={pdfHandler}>Печать</button>
         </div>
     )
 }

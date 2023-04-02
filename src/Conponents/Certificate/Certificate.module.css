@@ -1,10 +1,22 @@
 
 .page{
-    width: 1000px;
-    height: 1465px;
-    margin-left: 50px;
+    width: 930px;
+    height: 1280px;
+    margin-left: 5px;
     border: 2px solid black;
     margin-top: 20px;
+}
+.pageTwo{
+    width: 940px;
+    height: 1340px;
+    margin-left: 5px;
+    border: 2px solid black;
+    margin-top: 125px;
+}
+.tableBlockTd{
+    width: 40px;
+    text-align: center;
+    font-size: 14.6px;
 }
 
 .title{
@@ -29,7 +41,7 @@
 }
 
 .pageCount{
-    margin-left: 800px;
+    margin-left: 750px;
     font-size: 20px;
 }
 
@@ -148,7 +160,7 @@ font-size: 20px;
 }
 
 .signBlock{
-    margin-top: 500px;
+    margin-top: 350px;
     margin-left: 50px;
     font-size: 20px;
 }
@@ -165,18 +177,24 @@ font-size: 20px;
 }
 
 .fio{
+    
     margin-left: 350px;
 }
 
 .sert{
-    font-size: 20px;
-    margin-top: 15px;
+    font-size: 15px;
+    margin-top: 10px;
     margin-left: 20px;
+}
+.tableBlockTl{
+    font-size: 15px;
+    width: 70px;
+    height: 30px;
 }
 
 .stigmaPage{
     margin-left: 20px;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .pagePageTwo{
@@ -195,16 +213,17 @@ font-size: 20px;
 
 .looking{
     margin-left: 20px;
+    font-size: 15px;
 }
 
 .conditionsBlock{
     margin-top: 10px;
     margin-left: 20px;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .conditions{
-margin-left: 50px;
+margin-left: 115px;
 }
 
 .tempreture{
@@ -216,7 +235,7 @@ margin-left: 50px;
 }
 
 .frequency{
-    margin-left: 300px;
+    margin-left: 315px;
 }
 .pressure{
     margin-left: 380px; 
@@ -250,21 +269,21 @@ margin-left: 50px;
 }
 
 .result{
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 20px;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
 }
 .interval{
     margin-top: 10px;
     margin-left: 30px;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .engineer{
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 20px;
-    font-size: 20px;
+    font-size: 15px;
 }
 .name{
    margin-left: 180px; 
@@ -277,7 +296,7 @@ margin-left: 50px;
 }
 
 .adressAgain{
-    margin-top: 20px;
+    margin-top: 10px;
     text-align: center;
 }
 .site{
