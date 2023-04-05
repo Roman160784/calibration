@@ -2,7 +2,7 @@
 .page{
     width: 930px;
     height: 1280px;
-    margin-left: 5px;
+    margin-left: 10px;
     border: 2px solid black;
     margin-top: 20px;
 }
@@ -160,28 +160,32 @@ font-size: 20px;
 }
 
 .signBlock{
-    margin-top: 350px;
+    margin-top: 300px;
     margin-left: 50px;
     font-size: 20px;
 }
 .sign{
-    margin-left: 150px;
+    margin-left: 130px;
     border-bottom: 1px solid black;
 }
 
 .date{
-    margin-left: 50px;
+    margin-left: 40px;
 }
 .dateNum{
-    margin-left: 20px;
+    margin-left: 5px;
 }
 
 .fio{
-    
     margin-left: 350px;
 }
 
 .sert{
+    font-size: 15px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.sertNum{
     font-size: 15px;
     margin-top: 10px;
     margin-left: 20px;
@@ -259,29 +263,30 @@ margin-left: 115px;
 }
 
 .tableBlock{
+    margin-left: 30px;
     font-size: 15px;
     text-align: center;
 }
 .gum{
-    margin-left: 5px;
+    margin-left: 17px;
     margin-right: 5px;
     border-bottom: 1px solid #000;
 }
 
 .result{
-    margin-top: 10px;
+    margin-top: 5px;
     margin-left: 20px;
     font-size: 15px;
     font-weight: bold;
 }
 .interval{
-    margin-top: 10px;
+    margin-top: 5px;
     margin-left: 30px;
     font-size: 15px;
 }
 
 .engineer{
-    margin-top: 10px;
+    margin-top: 7px;
     margin-left: 20px;
     font-size: 15px;
 }

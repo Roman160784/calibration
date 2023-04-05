@@ -85,12 +85,12 @@ export const Certificate = () => {
             </div>
             <div className={classes.pageTwo}>
                 <div className={classes.sert}>Свидетельство о калибровке</div>
-                <div className={classes.sert}>
+                <div className={classes.sertNum}>
                     <span>Номер свидетельства:</span>
                     <span className={classes.stigmaPage}>{report.stigma}</span>
                     <span className={classes.pagePageTwo}>Страница 2 из 2</span>
                 </div>
-                <div className={classes.sert}>
+                <div className={classes.sertNum}>
                     <span className={classes.stigmaPage}>Калибровка выполнена с помощью:</span>
                     <span className={classes.pagePageTwo}>Таблица 1</span>
                 </div>
@@ -142,7 +142,7 @@ export const Certificate = () => {
                             <td className={classes.tableBlockTd}>Абсолютная погрешность</td>
                             <td className={classes.tableBlockTd}> Предел основной абсолютной погрешности</td>
                             <td className={classes.tableBlockTd}>Расширенная неопределенность</td>
-                            <td className={classes.tableBlockTd}>Доверительная вероятность, %</td>
+                            {/* <td className={classes.tableBlockTd}>Доверительная вероятность, %</td> */}
                             <td className={classes.tableBlockTd}>Коэффициент охвата</td>
                             <td className={classes.tableBlockTd}>Распределение</td>
                         </tr>
@@ -156,7 +156,7 @@ export const Certificate = () => {
                                         <td className={classes.tableBlockTd}>{r.error} MOм</td>
                                         <td className={classes.tableBlockTd}> ± {r.permissibleValue} MOм</td>
                                         <td className={classes.tableBlockTd}> {r.expandedUncertainty} MOм</td>
-                                        <td className={classes.tableBlockTd}>{r.probability}</td>
+                                        {/* <td className={classes.tableBlockTd}>{r.probability}</td> */}
                                         <td className={classes.tableBlockTd}>{r.coefficient}</td>
                                         <td className={classes.tableBlockTd}>{r.coefficient === 2 ? 'нормальное' : 'прямоугольное'}</td>
                                     </tr>
