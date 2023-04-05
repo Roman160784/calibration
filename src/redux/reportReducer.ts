@@ -49,7 +49,7 @@ const initialState: ReportType = {
     method: 'МК.ГМ 1580 - 2013, Метод прямых измерений',
     stigma: 'BY00045',
     boss: 'Начальник сектора ЭМиР Миранович Д. В.',
-    engineer: "Инженер по метрологии: Матвеенко Р. С.",
+    engineer: "Инженер по метрологии I к: Матвеенко Р. С.",
     calibrationConditions: {
         id: v1(),
         temperature: '21,0',
