@@ -96,17 +96,17 @@ export const Certificate = () => {
                 </div>
                 <div className={classes.tableStandardBlock}>
                     <table border={1}>
-                        <tr className={classes.tableStandard}>
-                            <td className={classes.tableBlockTl}> Наименование </td>
-                            <td className={classes.tableBlockTl}> Тип</td>
-                            <td className={classes.tableBlockTl}> Зав. №</td>
-                            <td className={classes.tableBlockTl}>Дата метрологической оценки</td>
+                        <tr className={classes.tableBlockT2}>
+                            <td className={classes.tableBlockT2}> Наименование </td>
+                            <td className={classes.tableBlockT2}> Тип</td>
+                            <td className={classes.tableBlockT2}> Зав. №</td>
+                            <td className={classes.tableBlockT2}>Дата метрологической оценки</td>
                         </tr>
                         <tr className={classes.tableStandard}>
-                            <td className={classes.tableBlockTl}>{report.standard.standardName}</td>
-                            <td className={classes.tableBlockTl}>{report.standard.standardType}</td>
-                            <td className={classes.tableBlockTl}>{report.standard.standardNumber}</td>
-                            <td className={classes.tableBlockTl}>{report.standard.calibrationDate}</td>
+                            <td className={classes.tableBlockT2}>{report.standard.standardName}</td>
+                            <td className={classes.tableBlockT2}>{report.standard.standardType}</td>
+                            <td className={classes.tableBlockT2}>{report.standard.standardNumber}</td>
+                            <td className={classes.tableBlockT2}>{report.standard.calibrationDate}</td>
                         </tr>
                     </table>
                 </div>
