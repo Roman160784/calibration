@@ -1,12 +1,10 @@
 
-import React, { ChangeEvent, useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { addCalibrationFieldAC } from '../../redux/calculationReducer';
 import { changeCalibrationConditionsAC, changeCalibrationStandatdAC, changeReportParameterAC } from '../../redux/reportReducer';
 import { selectReport } from '../../redux/selectors/reportSelector';
 import { useAppDispatch } from '../../redux/store';
 import { EditableSpan } from '../CommonComponents/EditableSpan/EditableSpan';
-import { Input } from '../CommonComponents/Input/Input';
 import classes from './ReportFirstPage.module.css'
 
 export const ReportFirstPage = () => {
@@ -78,11 +76,12 @@ export const ReportFirstPage = () => {
                     <td><EditableSpan title={ report.method} 
                     changeTitle={(title) => {changeReportParametr( 'method', title)}}/></td>
                 </tr>
-                <tr>
+                <tr >
                     <td>Условия проведения калибровки:</td>
-
-                    <td>Температура воздуха: <EditableSpan title={ report.calibrationConditions.temperature} 
-                    changeTitle={(title) => {changeReportWatherParametr( 'temperature', title)}}/> ºС
+                        <tr >
+                    <td >Температура воздуха: <EditableSpan title={ report.calibrationConditions.temperature} 
+                    changeTitle={(title) => {changeReportWatherParametr( 'temperature', title)}}/> ºС</td>
+                    </tr>
                         <tr>
                             <td>Относительная влажность воздуха:   <EditableSpan title={ report.calibrationConditions.relativeHumidity} 
                     changeTitle={(title) => {changeReportWatherParametr( 'relativeHumidity', title)}}/> %</td>
@@ -93,7 +92,7 @@ export const ReportFirstPage = () => {
                     changeTitle={(title) => {changeReportWatherParametr( 'supplyVoltage', title)}}/> B</td> </tr>
                         <tr> <td>Частота питающей сети: <EditableSpan title={ report.calibrationConditions.frequency} 
                     changeTitle={(title) => {changeReportWatherParametr( 'frequency', title)}}/> Гц</td> </tr>
-                    </td>
+                    
                 </tr>
             </table>
             </div>
